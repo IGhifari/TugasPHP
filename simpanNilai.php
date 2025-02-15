@@ -2,10 +2,12 @@
 
     include 'koneksi.php';
     $nis = $_POST['Nis'];
-    $nilai = $_POST['Nilai'];
+    $nilaiweb = $_POST['NilaiWEB'];
+    $nilaiits = $_POST['NilaiITS'];
+    $nilaigame = $_POST['NilaiGAME'];
+    $nilaibd = $_POST['NilaiBD'];
 
-
-    $sql = "INSERT INTO nilai (Nis, Nilai) VALUES('$nis', '$nilai')";
+    $sql = "INSERT INTO nilai (Nis, NilaiWeb, NilaiITS, NilaiGame, NilaiBasisData) VALUES('$nis', '$nilaiweb', '$nilaiits', '$nilaigame', '$nilaibd')";
 
     $tambah = mysqli_query($db, $sql);
 
@@ -15,5 +17,5 @@
         echo "<script>alert('Data gagal diinput')</script>";
     }
 
-    header("location:  formNilai.php");
+    header("location:  tampilNilai.php");
 ?>

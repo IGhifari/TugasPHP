@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REKAP DATA SISWA</title>
+    <title>REKAP DATA NILAI SISWA</title>
     <style>
         :root {
             --primary: #3b82f6;
@@ -125,31 +125,33 @@
 </head>
 <body>
     <div class="container">
-        <h1>REKAP DATA SISWA</h1>
+        <h1>REKAP DATA NILAI SISWA</h1>
         <div class="table-container">
             <table>
                 <tr>
                     <th>NIS</th>
-                    <th>Nama</th>
-                    <th>Kelas</th>
-                    <th>Tahun</th>
-                    <th>Action</th>
+                    <th>Nilai Web</th>
+                    <th>Nilai ITS</th>
+                    <th>Nilai Game</th>
+                    <th>Nilai Basis Data</th>
+                    <th>Aksi</th>
                 </tr>
                 <?php
                     include 'koneksi.php';
-                    $sql = "SELECT * FROM biodata";
+                    $sql = "SELECT * FROM nilai";
                     $query = mysqli_query($db, $sql);
-                    while($siswa = mysqli_fetch_array($query)){
+                    while($nilai = mysqli_fetch_array($query)){
                 ?>
                 <tr>
-                    <td><?php echo $siswa['Nis']; ?></td>
-                    <td><?php echo $siswa['Nama']; ?></td>
-                    <td><?php echo $siswa['Kelas']; ?></td>
-                    <td><?php echo $siswa['Tahun']; ?></td>
+                    <td><?php echo $nilai['Nis']; ?></td>
+                    <td><?php echo $nilai['NilaiWeb']; ?></td>
+                    <td><?php echo $nilai['NilaiITS']; ?></td>
+                    <td><?php echo $nilai['NilaiGame']; ?></td>
+                    <td><?php echo $nilai['NilaiBasisData']; ?></td>
                     <td>
                         <div class="action-buttons">
-                            <a href="editSiswa.php?id=<?php echo $siswa['Nis']; ?>" class="btn btn-edit">Edit</a>
-                            <a href="hapusSiswa.php?id=<?php echo $siswa['Nis']; ?>" class="btn btn-delete" onclick="return confirm('Yakin ingin menghapus data?')">Hapus</a>
+                            <a href="editNilai.php?id=<?php echo $nilai['Nis']; ?>" class="btn btn-edit">Edit</a>
+                            <a href="hapusNilai.php?id=<?php echo $nilai['Nis']; ?>" class="btn btn-delete" onclick="return confirm('Yakin ingin menghapus data?')">Hapus</a>
                         </div>
                     </td>
                 </tr>
@@ -157,7 +159,7 @@
             </table>
         </div>
         <div class="tambah-data">
-            <a href="formInput.php" class="btn-tambah">Tambah Data</a>
+            <a href="formNilai.php" class="btn-tambah">Tambah Data</a>
         </div>
     </div>
 </body>
